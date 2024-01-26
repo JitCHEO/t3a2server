@@ -1,7 +1,7 @@
 
 ## R1	Description of your website, including:
 - Purpose
-    - 
+    - The purpose of our website is to streamline the workflow within our working environment.
 
 - Functionality / features
     - 
