@@ -4,7 +4,7 @@
     - The purpose of our website is to streamline the workflow within our working environment. 
 
 - Functionality / features
-    - It have few forms in the app such as incident form, part request form.
+    - It have few forms in the app such as incident report form, parts request form, receiving error forms, stock count request form, bin changes request form.
 
 - Target audience
     - 
