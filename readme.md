@@ -1,10 +1,10 @@
 
 ## R1	Description of your website, including:
 - Purpose
-    - The purpose of our website is to streamline the workflow within our working environment.
+    - The purpose of our website is to streamline the workflow within our working environment. 
 
 - Functionality / features
-    - 
+    - It have few forms in the app such as incident form, part request form.
 
 - Target audience
     - 
