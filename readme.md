@@ -29,8 +29,6 @@
 
 ## R4	User Stories
 
-James
-
 - Users
 
     - Sam ( warehouse manager) find it frustating that team members aren't highlighting stuff frequently or earlier enough. like to use data analysis to direct decision making. cares about the well-being of his team. wants to streamline as much as possible to eliminate hiccups in the processes.
