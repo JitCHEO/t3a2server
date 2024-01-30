@@ -69,7 +69,33 @@
     - As Wendy, I want the form app to have clear & intuituve interface, allowing me to easily understand on how to fill & submit the forms.
 
 ## R5	Wireframes for multiple standard screen sizes, created using industry standard software
-- 
+- [Final Project PDF](file:///Users/jitkcheo/Desktop/Coder_Academy/T3(ii)%20Assignments/WireFrame/FinalProject.pdf)
+((file:///Users/jitkcheo/Desktop/Coder_Academy/T3(ii)%20Assignments/WireFrame)
+)
+
+- ![SignIn Page](./WireFrame/SignIn%20Page.png)
+    - Sign In 
+- ![Account Creation Page](./WireFrame/Account%20Creation.png)
+    - Creating New Account
+- ![Home Page](./WireFrame/Home%20Page.png)
+    - Home 
+- ![Forms Page](./WireFrame/Forms%20Page.png)
+    - Forms
+- ![FillIn Form Template Page](./WireFrame/Fill%20In%20Form%20Template.png)
+    - Forms Filling
+- ![Actions - Assigner Page](./WireFrame/Actions%20-%20Assigner.png)
+    - Assigner Actions 
+- ![Closed Form Page](./WireFrame/Closed%20Form.png)
+    - Form Closed
+- ![Actions - Assignee Page](./WireFrame/Actions%20-%20Assignee.png)
+    - Assignee Actions
+- ![Actions - Empty Page](./WireFrame/Actions%20-%20Empty.png)
+    - Completed Action 
+- ![Build A Form Page](./WireFrame/Build%20a%20form.png)
+    - New form build
+- ![Preview Form Page](./WireFrame/Preview%20Form.png)
+    - Form preview
+
 
 ## R6	Screenshots of your Trello board throughout the duration of the project	
 - 
