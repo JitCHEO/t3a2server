@@ -69,9 +69,7 @@
     - As Wendy, I want the form app to have clear & intuituve interface, allowing me to easily understand on how to fill & submit the forms.
 
 ## R5	Wireframes for multiple standard screen sizes, created using industry standard software
-- [Final Project PDF](file:///Users/jitkcheo/Desktop/Coder_Academy/T3(ii)%20Assignments/WireFrame/FinalProject.pdf)
-((file:///Users/jitkcheo/Desktop/Coder_Academy/T3(ii)%20Assignments/WireFrame)
-)
+- [Final Project PDF](./Docs/FinalProject.pdf)
 
 - ![SignIn Page](./WireFrame/SignIn%20Page.png)
     - Sign In 
