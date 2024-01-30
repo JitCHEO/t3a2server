@@ -1,10 +1,11 @@
 
 ## R1	Description of your website, including:
 - Purpose
-    - The purpose of our website is to streamline the workflow within our working environment. 
+    
+    To streamline the workflow within the working environment by providing a user-friendly platform for submitting and managing various forms. The system seeks to enhance communication and overall efficiencies involved with mid-large scale warehouse settings. 
 
 - Functionality / features
-    - Different form types and ability to create new forms. Incident report form, parts request form, receiving error forms, stock count request form, bin changes request form to name a few.
+    - Different form types and ability to create new forms. e.g. Incident report form, parts request form, receiving error forms, stock count request form, bin changes request form to name a few.
     - Every user will be able to lodge forms.
     - Different users will be granted access to be able to approve forms or read forms submitted such as incident forms. (permanant delegation)
     - Actions can be added to the forms that are assigned to a user to complete. (temp delegation)
@@ -69,30 +70,53 @@
     - As Wendy, I want the form app to have clear & intuituve interface, allowing me to easily understand on how to fill & submit the forms.
 
 ## R5	Wireframes for multiple standard screen sizes, created using industry standard software
-- [Final Project PDF](./Docs/FinalProject.pdf)
+- Complete wireframe PDF with imbedded links - [FinalProject Wireframe](./docs/FinalProject.pdf)
 
-- ![SignIn Page](./WireFrame/SignIn%20Page.png)
-    - Sign In 
-- ![Account Creation Page](./WireFrame/Account%20Creation.png)
-    - Creating New Account
-- ![Home Page](./WireFrame/Home%20Page.png)
-    - Home 
-- ![Forms Page](./WireFrame/Forms%20Page.png)
-    - Forms
-- ![FillIn Form Template Page](./WireFrame/Fill%20In%20Form%20Template.png)
-    - Forms Filling
-- ![Actions - Assigner Page](./WireFrame/Actions%20-%20Assigner.png)
-    - Assigner Actions 
-- ![Closed Form Page](./WireFrame/Closed%20Form.png)
-    - Form Closed
-- ![Actions - Assignee Page](./WireFrame/Actions%20-%20Assignee.png)
-    - Assignee Actions
-- ![Actions - Empty Page](./WireFrame/Actions%20-%20Empty.png)
-    - Completed Action 
-- ![Build A Form Page](./WireFrame/Build%20a%20form.png)
-    - New form build
-- ![Preview Form Page](./WireFrame/Preview%20Form.png)
-    - Form preview
+
+#### Sign In 
+
+![SignIn Page](./docs/WireFrame/SignIn%20Page.png)
+
+#### Creating New Account
+
+![Account Creation Page](./docs/WireFrame/Account%20Creation.png)
+
+#### Home Page
+
+![Home Page](./docs/WireFrame/Home%20Page.png)
+
+#### Forms Landing Page
+
+![Forms Page](./docs/WireFrame/Forms%20Page.png)
+
+#### Fill in Form View
+
+![FillIn Form Template Page](./docs/WireFrame/Fill%20In%20Form%20Template.png)
+
+#### Actions - Assigner's view
+
+![Actions - Assigner Page](./docs/WireFrame/Actions%20-%20Assigner.png)
+
+#### Actions - Assignee's view
+
+![Actions - Assignee Page](./docs/WireFrame/Actions%20-%20Assignee.png)
+
+#### Forms - Completed form view
+
+![Closed Form Page](./docs/WireFrame/Closed%20Form.png)
+
+#### Actions view but Empty
+
+![Actions - Empty Page](./docs/WireFrame/Actions%20-%20Empty.png)
+
+Form Builder view
+
+[Build A Form Page](./docs/WireFrame/Build%20a%20form.png)
+
+Form Builder when previewing new Form creation
+
+![Preview Form Page](./docs/WireFrame/Preview%20Form.png)
+
 
 
 ## R6	Screenshots of your Trello board throughout the duration of the project	
