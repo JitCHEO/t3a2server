@@ -1,7 +1,7 @@
 const express = require("express");
 
 const {User} = require('../models/UserModel');
-const {comparePassword, generateJwt} = require('../utils/userAuthFunctions');
+
 
 const router = express.Router();
 
@@ -15,3 +15,5 @@ return null
 router.post("/signup", async (request, response) =>{
     return null
 })
+
+module.exports = router
