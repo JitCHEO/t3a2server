@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const submissionSchema = new mongoose.Schema({
+const SubmissionSchema = new mongoose.Schema({
     form: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Form',
@@ -26,6 +26,8 @@ const submissionSchema = new mongoose.Schema({
     }
 });
 
-const Submission = mongoose.model('Submission', submissionSchema);
+const Submission = mongoose.model('Submission', SubmissionSchema);
 
-module.exports = Submission;
+module.exports = {
+    Submission
+};
