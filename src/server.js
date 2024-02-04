@@ -1,17 +1,17 @@
 const express = require("express");
-// const cors = require("cors");
+const cors = require('cors');
 
 const app = express();
 
-// var corsOptions = {
-//     origin: [
-//                 "localhost:3000", "localhost:3000/", 
-//                 "https://stream-lined.netlify.app/"
-//         ],
-//     optionsSuccessStatus: 200,
-// };
+var corsOptions = {
+    origin: [
+                "http://localhost:3000", "http://localhost:3000/", 
+                "https://stream-lined.netlify.app/", "https://stream-lined.netlify.app"
+        ],
+    optionsSuccessStatus: 200,
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

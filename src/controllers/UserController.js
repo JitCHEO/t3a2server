@@ -1,6 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const bcrypt = require('bcryptjs')
 const {User} = require('../models/UserModel');
+
+const router = express.Router();
 
 
 // GET method
@@ -29,14 +31,39 @@ router.get("/:id", async(request, response) => {
 })
 
 // POST
-// Creating new user in the DB
-// localhost:3000/users/signup
-router.post("/signup", async (request, response) =>{
-    try{
-        let newUser = await User.create(request.body);
-        response.json(newUser);
-    }catch (error){
-        response.status(500).json({message: "Internal server error"});
+router.post("/create-new-user", async (request, response) =>{
+
+    const hashedPassword = await bcrypt.hash(request.body.password, 10)
+
+    let newUser = await User.create({
+        fname: request.body.fname,
+        lname: request.body.lname,
+        email: request.body.email,
+        password: hashedPassword
+    }).catch(error => {return error})
+    
+    response.status(201).json({
+        newUser,
+        message: "Account created successfully"
+    })
+})
+
+router.post("/login", async (request, response) => {
+    try {
+        const check = await User.findOne({email: request.body.email})
+        if (!check) {
+            response.send("email not found")
+        }
+        const passwordMatch = await bcrypt.compare(request.body.password, check.password) 
+        
+        if (!passwordMatch) {
+            return response.status(401).json({ error: "Invalid password" });
+        }
+
+        response.status(200).json({ message: "Login successful" });
+
+    } catch(e) {
+        console.error(e)
     }
 })
 
@@ -57,6 +84,5 @@ router.delete("/:id", async (request, response) => {
         response.status(500).json({ message: "Internal server error" });
     }
 });
-
 
 module.exports = router
