@@ -1,7 +1,6 @@
 const express = require("express");
-const bcrypt = require('bcrypt.js')
+const bcrypt = require('bcryptjs')
 const {User} = require('../models/UserModel');
-const {comparePassword, generateJwt} = require('../utils/userAuthFunctions');
 
 const router = express.Router();
 
@@ -47,5 +46,7 @@ router.post("/login", async (request, response) => {
         console.error(e)
     }
 })
+
+module.exports = router
 
 
