@@ -5,8 +5,8 @@ const app = express();
 
 var corsOptions = {
     origin: [
-                "localhost:3000", "localhost:3000/", 
-                "https://stream-lined.netlify.app/"
+                "http://localhost:3000", "http://localhost:3000/", 
+                "https://stream-lined.netlify.app/", "https://stream-lined.netlify.app"
         ],
     optionsSuccessStatus: 200,
 };

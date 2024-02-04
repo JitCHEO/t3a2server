@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const AuthSchema = new Schema({
     access: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     }
 })
 
