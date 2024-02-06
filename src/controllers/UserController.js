@@ -33,19 +33,25 @@ router.get("/:id", async(request, response) => {
 // POST
 router.post("/create-new-user", async (request, response) =>{
 
-    const hashedPassword = await bcrypt.hash(request.body.password, 10)
+    try {
+        const hashedPassword = await bcrypt.hash(request.body.password, 10)
 
-    let newUser = await User.create({
-        fname: request.body.fname,
-        lname: request.body.lname,
-        email: request.body.email,
-        password: hashedPassword
-    }).catch(error => {return error})
+        let newUser = await User.create({
+            fname: request.body.fname,
+            lname: request.body.lname,
+            email: request.body.email,
+            password: hashedPassword
+        }).catch(error => {return error})
+        
+        response.status(201).json({
+            newUser,
+            message: "Account created successfully"
+        })
+    } catch(e) {
+        console.error(e)
+    }
+
     
-    response.status(201).json({
-        newUser,
-        message: "Account created successfully"
-    })
 })
 
 router.post("/login", async (request, response) => {
