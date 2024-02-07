@@ -22,6 +22,7 @@ const UserSchema = new Schema({
         required: true
     },
     auth: {
+        type: String,
         enum: ['user', 'manager', 'admin'],
         default: 'user',
         required: true
@@ -34,7 +35,7 @@ UserSchema.pre(
     async function (next) {
         
         const user = this
-        if (!user.isModfied('password')) return next()
+        if (!user.isModified('password')) return next()
 
         const hash = await bcrypt.hash(this.password, 10)
         this.password = hash
