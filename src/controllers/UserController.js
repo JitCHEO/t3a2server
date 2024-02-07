@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require('bcryptjs')
 const {User} = require('../models/UserModel');
-const {comparePassword, generateJwt} = require('../functions/userAuthFunctions')
+const {comparePassword, generateJwt, verifyToken} = require('../utils/userAuthFunctions')
 
 const router = express.Router();
 
@@ -51,6 +51,13 @@ router.post("/create-new-user", async (request, response) =>{
     }
 })
 
+//login route 
+/*
+{
+    "email": "email@email.com",
+    "password": "password"
+}
+*/
 router.post("/login", async (request, response) => {
     
 
@@ -67,6 +74,15 @@ router.post("/login", async (request, response) => {
         response.json({
             jwt: jwt
         })
+})
+
+router.post("/token-refresh", verifyToken, async (request, response) => {
+    
+    const refreshToken = generateJwt(request._id.toString())
+    console.log(refreshToken)
+    response.json({
+        jwt: refreshToken
+    })
 })
 
 // DELETE method
