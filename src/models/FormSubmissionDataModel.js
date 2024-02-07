@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const SubmissionSchema = new mongoose.Schema({
+const FormSubmissionDataSchema = new mongoose.Schema({
     form: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Form',
+        ref: 'FormTemplate',
         required: true
     },
     user: {
@@ -17,8 +17,8 @@ const SubmissionSchema = new mongoose.Schema({
     }],
     status: {
         type: String,
-        enum: ['pending', 'approved', 'rejected'],
-        default: 'pending'
+        enum: ['open', 'pending task', 'closed'],
+        default: 'open'
     },
     createdAt: {
         type: Date,
@@ -26,7 +26,7 @@ const SubmissionSchema = new mongoose.Schema({
     }
 });
 
-const Submission = mongoose.model('Submission', SubmissionSchema);
+const Submission = mongoose.model('Submission', FormSubmissionDataSchema);
 
 module.exports = {
     Submission

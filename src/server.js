@@ -1,7 +1,10 @@
 const express = require("express");
 const cors = require('cors');
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
 
 const app = express();
+
 
 var corsOptions = {
     origin: [
@@ -15,12 +18,15 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
+// JWT functionality
+
 app.get("/", (request, response) => {
     response.json({
         message: "Welcome to Stream-Lined"
     })
 });
 const userRouter = require('./controllers/UserController');
+const { JsonWebTokenError } = require("jsonwebtoken");
 app.use("/users", userRouter);
 
 
