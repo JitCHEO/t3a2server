@@ -41,9 +41,11 @@ router.post("/create-new-user", async (request, response) =>{
             email: request.body.email,
             password: request.body.password
         });
+
+        let jwt = generateJwt(newUser._id.toString())
     
         response.status(201).json({
-            newUser,
+            jwt: jwt,
             message: "Account created successfully"
         });
     } catch (error) {
