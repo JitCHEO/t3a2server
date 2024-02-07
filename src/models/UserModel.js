@@ -22,10 +22,25 @@ const UserSchema = new Schema({
         required: true
     },
     auth: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Auth'
+        enum: ['user', 'manager', 'admin'],
+        default: 'user',
+        required: true
     }
 })
+
+//encryption middleware
+UserSchema.pre(
+    'save',
+    async function (next) {
+        
+        const user = this
+        if (!user.isModfied('password')) return next()
+
+        const hash = await bcrypt.hash(this.password, 10)
+        this.password = hash
+        next()
+    }
+)
 
 const User = mongoose.model('User', UserSchema);
 
