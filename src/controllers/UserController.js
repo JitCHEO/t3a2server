@@ -87,6 +87,10 @@ router.post("/token-refresh", verifyToken, async (request, response) => {
     })
 })
 
+router.post("auth-checker", verifyToken, async (request, response) => {
+    response.json({message: "you're still authorized"})
+})
+
 // DELETE method
 // Deleting user by ID
 // localhost:3000/users/:id
