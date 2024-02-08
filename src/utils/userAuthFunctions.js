@@ -24,8 +24,6 @@ function verifyToken(request, response, next) {
     
     const token = request.headers.jwt
 
-    console.log('Headers:', request.headers);
-
     if (!token) {
         return response.status(401).json({error: "Unauthorized"})
     }
