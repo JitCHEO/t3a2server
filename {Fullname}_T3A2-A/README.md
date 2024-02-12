@@ -92,7 +92,7 @@
 
 #### Sign In 
 
-![SignIn Page](./docs/WireFrame/SignIn%20Page.png)
+![SignIn Page](./docs/WireFrame/SignIn.png)
 
 #### Account Creation
 
@@ -100,7 +100,7 @@
 
 #### Home
 
-![Home](./docs/WireFrame/Home%20Page.png)
+![Home](./docs/WireFrame/Home.png)
 
 #### Form Builder
 
