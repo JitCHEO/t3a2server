@@ -17,8 +17,8 @@ const FormTemplateSchema = new Schema({
     }
 });
 
-const Category = mongoose.model('Category', FormTemplateSchema);
+const FormTemplate = mongoose.model('FormTemplate', FormTemplateSchema);
 
 module.exports = {
-    Category
+    FormTemplate
 };
