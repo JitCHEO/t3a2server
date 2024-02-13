@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.get("/", (request, response) => {
     response.json({
-        message: "Welcome to Stream-Lined"
+        message: "Welcome to Stream-Lined API"
     })
 });
 const userRouter = require('./controllers/UserController');
