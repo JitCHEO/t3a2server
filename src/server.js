@@ -11,7 +11,7 @@ const app = express();
 var corsOptions = {
     origin: [
                 "http://localhost:3000", "http://localhost:3000/", 
-                "https://stream-linedd-8391d4c8cf39.herokuapp.com/", "https://stream-linedd-8391d4c8cf39.herokuapp.com"
+                "https://stream-lined.netlify.app/", "https://stream-lined.netlify.app"
         ],
     optionsSuccessStatus: 200,
 };
@@ -35,7 +35,7 @@ app.use("/users", userRouter);
 // Defining routes for form submissions
 
 const formSubmissionRouter = require('./controllers/FormSubmissionController');
-app.use("/formsubmissions", formSubmissionRouter )
+app.use("/FormBuilder/formsubmissions", formSubmissionRouter )
 
 
 module.exports = {
