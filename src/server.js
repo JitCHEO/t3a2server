@@ -35,7 +35,7 @@ app.use("/users", userRouter);
 // Defining routes for form submissions
 
 const formSubmissionRouter = require('./controllers/FormSubmissionController');
-app.use("/FormBuilder/formsubmissions", formSubmissionRouter )
+app.use("/formsubmissions", formSubmissionRouter )
 
 
 module.exports = {
