@@ -14,6 +14,8 @@
     - group search a form type
     - alter self submitted forms, cannot alter someone else's submission.
 
+- Min viable product excludes - actions, upload functionality, search specific submissions, form alteration.
+
 - Target audience
     - Warehouse Teams
     - HR Safety Compliance Officer
