@@ -13,8 +13,19 @@
     - search specific submissions
     - group search a form type
     - alter self submitted forms, cannot alter someone else's submission.
+    - download portion of the information as spreadsheet data
+    - user accounts
+    - access restrictions for form building and data deletion
+    - restricting viewing access of completed forms
 
-- Min viable product excludes - actions, upload functionality, search specific submissions, form alteration.
+
+- Min viable product will include;
+    - form builder
+    - different form types
+    - user accounts
+    - form lodging
+    - form viewing
+    - action to change status to complete
 
 - Target audience
     - Warehouse Teams
@@ -88,9 +99,12 @@
 - As Wendy, I want to know that my form was submitted successfully with an email confirmation, so that I can have the reassurance that it was received and evidence if asked. 
 
 ## R5	Wireframes for multiple standard screen sizes, created using industry standard software
-- Complete wireframe PDF with imbedded links - [FinalProject Wireframe pdf](./docs/WireFrame/FinalProject.pdf)
-- Balsamiq project file with comments - [FinalProject Wireframe bmpr](./docs//WireFrame/FinalProject.bmpr)
 
+options:
+
+1. Complete wireframe PDF. viewing from this document will provide comments and actual embedded links for navigating the wireframe [FinalProject Wireframe pdf](./docs/WireFrame/FinalProject.pdf)
+2. Balsamiq project file with comments as an alternative - [FinalProject Wireframe bmpr](./docs//WireFrame/FinalProject.bmpr)
+3. The below images - no links embedded
 
 #### Sign In 
 
@@ -144,7 +158,6 @@
 
 ## R6	Screenshots of your Trello board throughout the duration of the project	
 
-
 25th - Jan
 ![25-01](./docs/Trello/25-01-2024.JPG)
 27th - Jan
@@ -167,3 +180,7 @@
 ![09-02](./docs/Trello/09-02-2024.JPG)
 12th - Feb
 ![12-02](./docs/Trello/12-02-2024.JPG)
+14th - Feb
+![14-02](./docs/Trello/14-02-2024.JPG)
+16th - Feb
+![16-02](./docs/Trello/16-02-2024.JPG)
