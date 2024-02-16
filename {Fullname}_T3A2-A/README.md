@@ -13,8 +13,19 @@
     - search specific submissions
     - group search a form type
     - alter self submitted forms, cannot alter someone else's submission.
+    - download portion of the information as spreadsheet data
+    - user accounts
+    - access restrictions for form building and data deletion
+    - restricting viewing access of completed forms
 
-- Min viable product excludes - actions, upload functionality, search specific submissions, form alteration.
+
+- Min viable product will include;
+    - form builder
+    - different form types
+    - user accounts
+    - form lodging
+    - form viewing
+    - action to change status to complete
 
 - Target audience
     - Warehouse Teams
@@ -144,7 +155,6 @@
 
 ## R6	Screenshots of your Trello board throughout the duration of the project	
 
-
 25th - Jan
 ![25-01](./docs/Trello/25-01-2024.JPG)
 27th - Jan
@@ -167,3 +177,7 @@
 ![09-02](./docs/Trello/09-02-2024.JPG)
 12th - Feb
 ![12-02](./docs/Trello/12-02-2024.JPG)
+14th - Feb
+![14-02](./docs/Trello/14-02-2024.JPG)
+16th - Feb
+![16-02](./docs/Trello/16-02-2024.JPG)
