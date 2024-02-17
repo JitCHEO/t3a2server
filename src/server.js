@@ -36,7 +36,7 @@ app.use("/users", userRouter);
 
 // Defining routes for form template creation
 const formTemplateRouter = require('./controllers/FormTemplateController');
-app.use("/formcreation", formTemplateRouter )
+app.use("/formTemplates", formTemplateRouter )
 
 module.exports = {
     app
