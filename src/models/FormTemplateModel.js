@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const FormTemplateSchema = new mongoose.Schema({
+const FormTemplateSchema = new Schema({
     formName: {
         type: String,
         required: true,
         unique: true
     },
-    layout: {
-        type: Array,
+    assignedTo: {
+        type: String,
         required: true
     },
-    header: {
-        type: Object,
+    components: {
+        type: Array,
+        required: true
     }
 });
 
