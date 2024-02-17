@@ -1,33 +1,25 @@
-const express = require('express');
-const {FormTemplate} = require('../models/FormTemplateModel')
+const express = require("express")
+const { FormTemplate } = require("../models/FormTemplateModel")
 
 const router = express.Router();
 
-// Define route for handling form submissions
+// Define routes
+router.post('/add', async (request, response) => {
 
-router.post('/createForm', async (req, res) => {
-  try {
-    // Extract form data from request body
-    const { formName, layout, header } = req.body;
+    try {
+        let newFormTemplate = await FormTemplate.create({
+            formName: request.body.formName,
+            assignedTo: request.body.assignedTo,
+            components: request.body.components
+        })
 
-    // Create a new form submission document
-    const formTemplate = new FormTemplate({
-      formName,
-      layout,
-      header
-    });
+        response.status(201).json({
+            newTemplate: newFormTemplate
+        })
+    } catch (error) {
+        response.status(500).json({error: error.message})
+    }
+})
 
-    // Save the form submission document to the database
-    await formTemplate.save();
 
-    // Send a success response
-    res.status(201).json({ message: 'Form template creaeted successfully' });
-  } catch (error) {
-    // Handle errors
-    console.error('Error creating form:', error);
-    res.status(500).json({ error: 'An error occurred while creating the form' });
-  }
-});
-
-// Export the router
 module.exports = router;
