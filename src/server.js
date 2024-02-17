@@ -32,11 +32,13 @@ const userRouter = require('./controllers/UserController');
 const { JsonWebTokenError } = require("jsonwebtoken");
 app.use("/users", userRouter);
 
-// Defining routes for form submissions
+// // Defining routes for form submissions
+// const formSubmissionRouter = require('./controllers/FormSubmissionController');
+// app.use("/formsubmissions", formSubmissionRouter )
 
-const formSubmissionRouter = require('./controllers/FormSubmissionController');
-app.use("/formsubmissions", formSubmissionRouter )
-
+// Defining routes for form template creation
+const formTemplateRouter = require('./controllers/FormTemplateController');
+app.use("/formcreation", formTemplateRouter )
 
 module.exports = {
     app
