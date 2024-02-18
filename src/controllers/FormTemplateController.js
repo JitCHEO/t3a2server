@@ -4,6 +4,11 @@ const { FormTemplate } = require("../models/FormTemplateModel")
 const router = express.Router();
 
 // Define routes
+router.get("/forms", async (request, response) =>{
+    let result = await FormTemplate.find();
+    response.json({result});``
+})
+
 router.post('/add', async (request, response) => {
 
     try {
