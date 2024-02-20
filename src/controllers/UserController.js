@@ -1,7 +1,8 @@
 const express = require("express");
 const bcrypt = require('bcryptjs')
 const {User} = require('../models/UserModel');
-const {comparePassword, generateJwt, verifyToken} = require('../utils/userAuthFunctions')
+const {comparePassword, generateJwt, verifyToken, getUserIdFromToken} = require('../utils/userAuthFunctions')
+
 
 const router = express.Router();
 
@@ -12,14 +13,13 @@ const router = express.Router();
 // GOOD
 router.get("/", async (request, response) =>{
     let result = await User.find();
-    response.json({result});``
+    response.json({result});
 })
 
 // GET method
 //Find user by ID in the DB
 //localhost:3000/users/:id
 router.get("/:id", async(request, response) => {
-    let result = await User.findById(request.params.id).catch(error => {return "Id not found"});
     try{
         let result = await User.findById(request.params.id);
         if(!result){
@@ -30,6 +30,44 @@ router.get("/:id", async(request, response) => {
         return response.status(500).json({message: " Internal server error"});
     }
 })
+
+//Get Favourites
+
+router.get("/favourites", async(request, response) => {
+    let id = getUserIdFromToken(request.headers.jwt)
+    let result = await User.findById(id).catch(error => {return "Id not found"})
+    return response.json({
+        favourites: result.favourites
+    })
+})
+
+//Add Favourites
+
+router.patch('/favourites', async (request, response) => {
+        
+    try {
+        const id = getUserIdFromToken(request.headers.jwt);
+        if (!id) {
+            return response.status(401).json({ error: 'Invalid token' });
+        }
+
+
+        const result = await User.findOneAndUpdate(
+            { _id: id },
+            { $set: { favourites: request.body.favourites } },
+            { new: true }
+        );
+
+        if (!result) {
+            return response.status(404).json({ error: 'User not found' });
+        }
+        console.log(result)
+        return response.json(result);
+    } catch (error) {
+        console.error('Error updating favourites:', error);
+        return response.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 // POST
 router.post("/create-new-user", async (request, response) =>{
