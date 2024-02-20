@@ -5,7 +5,7 @@ const FormTemplateSchema = new Schema({
     formName: {
         type: String,
         required: true,
-        unique: false
+        unique: true
     },
     assignedTo: {
         type: String,
