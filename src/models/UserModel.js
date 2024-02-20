@@ -26,6 +26,9 @@ const UserSchema = new Schema({
         enum: ['user', 'manager', 'admin'],
         default: 'user',
         required: true
+    },
+    favourites: {
+        type: Array,
     }
 })
 
