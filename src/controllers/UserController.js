@@ -7,6 +7,9 @@ const {comparePassword, generateJwt, verifyToken, getUserIdFromToken} = require(
 const router = express.Router();
 
 
+
+
+
 // GET method
 // Find all user in DB
 //localhost:3000/users/
@@ -14,6 +17,14 @@ const router = express.Router();
 router.get("/", async (request, response) =>{
     let result = await User.find();
     response.json({result});
+})
+
+router.get('/favourites', async(request, response) => {
+    const id = getUserIdFromToken(request.headers.jwt)
+    let result = await User.findOne({_id: id})
+    return response.json({
+        favourites: result.favourites
+    })
 })
 
 // GET method
@@ -29,16 +40,6 @@ router.get("/:id", async(request, response) => {
     }catch(error){
         return response.status(500).json({message: " Internal server error"});
     }
-})
-
-//Get Favourites
-
-router.get("/favourites", async(request, response) => {
-    let id = getUserIdFromToken(request.headers.jwt)
-    let result = await User.findById(id).catch(error => {return "Id not found"})
-    return response.json({
-        favourites: result.favourites
-    })
 })
 
 //Add Favourites
