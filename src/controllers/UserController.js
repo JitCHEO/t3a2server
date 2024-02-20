@@ -45,17 +45,16 @@ router.get("/:id", async(request, response) => {
 //Add Favourites
 
 router.patch('/favourites', async (request, response) => {
-        
+
     try {
         const id = getUserIdFromToken(request.headers.jwt);
         if (!id) {
             return response.status(401).json({ error: 'Invalid token' });
         }
 
-
         const result = await User.findOneAndUpdate(
             { _id: id },
-            { $set: { favourites: request.body.favourites } },
+            { $set: { favourites: request.body.favourite } },
             { new: true }
         );
 
