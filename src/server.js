@@ -21,8 +21,7 @@ app.use(cors(corsOptions));
 // Middleware to parse JSON body
 app.use(express.json());
 
-// JWT functionality
-
+// JWT functionality (Users)
 app.get("/", (request, response) => {
     response.json({
         message: "Welcome to Stream-Lined API"
@@ -33,10 +32,10 @@ const { JsonWebTokenError } = require("jsonwebtoken");
 app.use("/users", userRouter);
 
 
-
 // Defining routes for form template creation
 const formTemplateRouter = require('./controllers/FormTemplateController');
-app.use("/formcreation", formTemplateRouter )
+app.use("/formTemplates", formTemplateRouter)
+
 
 module.exports = {
     app
