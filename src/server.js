@@ -36,6 +36,10 @@ app.use("/users", userRouter);
 const formTemplateRouter = require('./controllers/FormTemplateController');
 app.use("/formTemplates", formTemplateRouter)
 
+//defining routes for form Submission
+const formRouter = require('./controllers/FormController')
+app.use("/forms", formRouter)
+
 
 module.exports = {
     app
