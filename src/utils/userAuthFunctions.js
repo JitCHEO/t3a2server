@@ -1,12 +1,14 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+//password checker
 async function comparePassword(plainTextPassword, hashedPassword){
     let doesPasswordMatch = false
     doesPasswordMatch = await bcrypt.compare(plainTextPassword, hashedPassword)
     return doesPasswordMatch
 }
 
+//make jwt
 function generateJwt(userId) {
     let newJwt = jwt.sign(
         {
@@ -17,6 +19,25 @@ function generateJwt(userId) {
     )
 
     return newJwt
+}
+
+//extract userID from jwt
+function getUserIdFromToken(token) {
+    try {
+        if (!token) {
+            throw new Error('Token is missing');
+        }
+        const decodedToken = jwt.decode(token);
+        
+        if (!decodedToken || !decodedToken.userId) {
+            throw new Error('Invalid token format');
+        }
+
+        return decodedToken.userId;
+    } catch (error) {
+        console.error('Error decoding or extracting token:', error);
+        return null;
+    }
 }
 
 //middleware to verify JWT
@@ -34,7 +55,7 @@ function verifyToken(request, response, next) {
         }
 
         request._id = decoded
-        console.log(request._id)
+        //console.log(request._id)
         next()
     })
 }
@@ -42,5 +63,6 @@ function verifyToken(request, response, next) {
 module.exports = {
     comparePassword,
     generateJwt,
-    verifyToken
+    verifyToken,
+    getUserIdFromToken
 }
