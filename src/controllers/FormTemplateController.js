@@ -34,7 +34,8 @@ router.post('/add', async (request, response) => {
         let newFormTemplate = await FormTemplate.create({
             formName: request.body.formName,
             assignedTo: request.body.assignedTo,
-            components: request.body.components
+            components: request.body.components,
+            questionHeaders: request.body.components
         })
 
         response.status(201).json({
