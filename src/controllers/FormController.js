@@ -1,18 +1,23 @@
 const express = require('express');
 const { Form } = require('../models/FormModel');
+const { getUserIdFromToken } = require('../utils/userAuthFunctions');
 
 const router = express.Router();
 
 
 router.post('/submit', async (request, response) => {
+  
   try {
 
-    const { description,formTemplate,user } = request.body;
+    const { description,formTemplate, formData } = request.body;
+
+    const id = getUserIdFromToken(request.headers.jwt)
 
       let newForm = await Form.create({
           description: description,
           formTemplate: formTemplate,
-          user: user,
+          formData: formData,
+          user: id
       })
 
       response.status(201).json({
