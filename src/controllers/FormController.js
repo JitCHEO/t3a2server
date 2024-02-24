@@ -4,6 +4,34 @@ const { getUserIdFromToken } = require('../utils/userAuthFunctions');
 
 const router = express.Router();
 
+//get forms for current user
+router.get('/currentUser', async (request, response) => {
+  try {
+    const id = getUserIdFromToken(request.headers.jwt)
+    const result = await Form.find({user: id, formTemplate: request.headers.formid})
+                              .populate('user', '-_id fname lname')
+                              .populate('formTemplate', '-_id assignedTo')
+    if(!result){
+      return response.status(404).json({message:"completed forms not found"});
+  }
+    return response.json({result: result})
+  } catch (error) {
+    return response.status(500).json({message: " Internal server error"})
+  }
+})
+
+router.get("/:id", async(request, response) => {
+  try{
+      let result = await User.findById(request.params.id);
+      if(!result){
+          return response.status(404).json({message:"User not found"});
+      }
+      return response.json({result});
+  }catch(error){
+      return response.status(500).json({message: " Internal server error"});
+  }
+})
+
 
 router.post('/submit', async (request, response) => {
   
