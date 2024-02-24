@@ -13,7 +13,7 @@ const FormSchema = new mongoose.Schema({
     required: true,
   },
   formData: {
-    type: Array,
+    type: Object,
     required: true
   },
   user: {
