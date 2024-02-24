@@ -13,6 +13,10 @@ router.get('/:formName', async (request, response) => {
     try {
         const formName = request.params.formName;
 
+        // Check if formName is being received correctly
+        console.log('Received formName:', formName);
+
+
         const template = await FormTemplate.findOne({ formName }).catch(error => error);
 
         if (!template) {
