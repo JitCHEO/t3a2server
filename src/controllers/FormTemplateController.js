@@ -35,7 +35,7 @@ router.post('/add', async (request, response) => {
             formName: request.body.formName,
             assignedTo: request.body.assignedTo,
             components: request.body.components,
-            questionHeaders: request.body.components
+            questionHeaders: request.body.questionHeaders
         })
 
         response.status(201).json({
