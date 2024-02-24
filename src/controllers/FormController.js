@@ -56,23 +56,5 @@ router.post('/submit', async (request, response) => {
   }
 })
 
-// GET request handler to fetch a form template by name
-router.get('/:formName', async (req, res) => {
-  const formName = req.params.formName;
-
-  try {
-      // Find the form template by name in your database
-      const formTemplate = await Form.findOne({ name: formName });
-      if (!formTemplate) {
-          return res.status(404).json({ error: 'Form template not found' });
-      }
-
-      res.json({ formTemplate });
-  } catch (error) {
-      console.error('Error fetching form template:', error);
-      res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
 // Export the router
 module.exports = router;
