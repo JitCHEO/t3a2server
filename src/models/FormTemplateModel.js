@@ -16,7 +16,7 @@ const FormTemplateSchema = new Schema({
         required: true
     },
     questionHeaders: {
-        type: Array,
+        type: Object
     }
 });
 
