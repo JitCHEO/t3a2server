@@ -9,18 +9,24 @@ const router = express.Router();
 
 
 router.get('/favourites', async(request, response) => {
-    const id = getUserIdFromToken(request.headers.jwt)
-    let result = await User.findOne({_id: id})
-    console.log(result)
-    if (!result) {
+        try {
+            const id = getUserIdFromToken(request.headers.jwt);
+            
+            if (!id) {
+                return response.status(401).json({
+                    error: 'Invalid or missing token'
+                });
+        }
+        const result = await User.findOne({_id: id})
+        
+        const { favourites } = result.toObject()
         return response.json({
-            favourites: null
+            favourites: favourites || null
         })
+    } catch (error) {
+        console.error("Error fetching user Favourites", error)
+        return response.status(500).json({error: 'internal server error'})
     }
-    const { favourites } = result.toObject()
-    return response.json({
-        favourites: favourites
-    })
 })
 
 // GET method
@@ -31,6 +37,10 @@ router.get("/", async (request, response) =>{
     let result = await User.find();
     response.json({result});
 })
+
+router.get("/auth-checker", verifyToken, async (request, response) => {
+    response.json({message: "you're still authorized"})
+});
 
 // GET method
 //Find user by ID in the DB
@@ -116,10 +126,13 @@ router.post("/login", async (request, response) => {
         if (!isPasswordCorrect) {
             return response.status(403).json({ error: "Incorrect password, please try again." });
         }
-
+        const auth = user.auth
         const jwt = generateJwt(user._id.toString());
 
-        response.json({ jwt: jwt });
+        response.json({ 
+            jwt: jwt,
+            auth: auth
+        });
     } catch (error) {
         console.error("Error during login:", error);
         response.status(500).json({ error: "Internal server error" });
@@ -129,16 +142,11 @@ router.post("/login", async (request, response) => {
 router.post("/token-refresh", verifyToken, async (request, response) => {
     
     const refreshToken = generateJwt(request._id.toString())
-    console.log(refreshToken)
+    //console.log(refreshToken)
     response.json({
         jwt: refreshToken
     })
 })
-
-router.post("/auth-checker", verifyToken, async (request, response) => {
-    response.json({message: "you're still authorized"})
-})
-
 
 
 // DELETE method
