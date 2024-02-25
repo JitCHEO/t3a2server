@@ -1,5 +1,6 @@
 const express = require("express")
 const { FormTemplate } = require("../models/FormTemplateModel")
+const { From } = require("../models/FormModel")
 
 const router = express.Router();
 
@@ -49,6 +50,24 @@ router.post('/add', async (request, response) => {
         response.status(500).json({error: error.message})
     }
 })
+
+// Delete a form template and associated forms
+router.delete("/:formTemplateId", async (request, response) => {
+    try {
+      const formTemplateId = request.params.formTemplateId;
+  
+      // Delete the form template
+      await FormTemplate.findByIdAndDelete(formTemplateId);
+  
+    // Delete all associated forms by finding forms with the matching formTemplateId
+    await Form.deleteMany({ formTemplateId: formTemplateId });
+  
+      response.status(200).json({ message: "Form template and associated forms deleted successfully" });
+    } catch (error) {
+      console.error("Error:", error);
+      response.status(500).json({ error: "Internal server error" });
+    }
+  });
 
 
 module.exports = router;
