@@ -8,7 +8,20 @@ const router = express.Router();
 
 
 
-
+router.get('/favourites', async(request, response) => {
+    const id = getUserIdFromToken(request.headers.jwt)
+    let result = await User.findOne({_id: id})
+    console.log(result)
+    if (!result) {
+        return response.json({
+            favourites: null
+        })
+    }
+    const { favourites } = result.toObject()
+    return response.json({
+        favourites: favourites
+    })
+})
 
 // GET method
 // Find all user in DB
@@ -17,14 +30,6 @@ const router = express.Router();
 router.get("/", async (request, response) =>{
     let result = await User.find();
     response.json({result});
-})
-
-router.get('/favourites', async(request, response) => {
-    const id = getUserIdFromToken(request.headers.jwt)
-    let result = await User.findOne({_id: id})
-    return response.json({
-        favourites: result.favourites
-    })
 })
 
 // GET method
@@ -61,8 +66,8 @@ router.patch('/favourites', async (request, response) => {
         if (!result) {
             return response.status(404).json({ error: 'User not found' });
         }
-        console.log(result)
-        return response.json(result);
+        const { favourites } = result.toObject()
+        return response.json(favourites);
     } catch (error) {
         console.error('Error updating favourites:', error);
         return response.status(500).json({ error: 'Internal server error' });
@@ -99,22 +104,27 @@ router.post("/create-new-user", async (request, response) =>{
 }
 */
 router.post("/login", async (request, response) => {
-    
-
-        const user = await User.findOne({email: request.body.email}).catch(error => error)
+    try {
+        const user = await User.findOne({ email: request.body.email });
         
-        let isPasswordCorrect = await comparePassword(request.body.password, user.password)
+        if (!user) {
+            return response.status(403).json({ error: "Invalid email or password." });
+        }
+        
+        const isPasswordCorrect = await comparePassword(request.body.password, user.password);
 
         if (!isPasswordCorrect) {
-            response.status(403).json({error: "Incorrect password, please try again."})
+            return response.status(403).json({ error: "Incorrect password, please try again." });
         }
 
-        let jwt = generateJwt(user._id.toString())
+        const jwt = generateJwt(user._id.toString());
 
-        response.json({
-            jwt: jwt
-        })
-})
+        response.json({ jwt: jwt });
+    } catch (error) {
+        console.error("Error during login:", error);
+        response.status(500).json({ error: "Internal server error" });
+    }
+});
 
 router.post("/token-refresh", verifyToken, async (request, response) => {
     
