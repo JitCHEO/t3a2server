@@ -25,12 +25,14 @@ function generateJwt(userId) {
 function getUserIdFromToken(token) {
     try {
         if (!token) {
-            throw new Error('Token is missing');
+            console.error('Token is missing')
+            return null
         }
         const decodedToken = jwt.decode(token);
         
-        if (!decodedToken || !decodedToken.userId) {
-            throw new Error('Invalid token format');
+        if (!decodedToken || typeof decodedToken !== 'object' || !decodedToken.userId) {
+            console.error('Invalid token format');
+            return null
         }
 
         return decodedToken.userId;
