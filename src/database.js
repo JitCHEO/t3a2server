@@ -10,6 +10,16 @@ async function databaseConnect(){
     }
 }
 
+async function databaseDisconnect() {
+    try {
+        await mongoose.disconnect();
+        console.log("Database disconnected");
+    } catch (error) {
+        console.warn(`databaseDisconnect failed: ${JSON.stringify(error)}`);
+    }
+}
+
 module.exports = {
-    databaseConnect
+    databaseConnect,
+    databaseDisconnect
 }
