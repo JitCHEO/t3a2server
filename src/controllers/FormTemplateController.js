@@ -52,15 +52,12 @@ router.post('/add', async (request, response) => {
 })
 
 // Delete a form template and associated forms
-router.delete("/:formTemplateId", async (request, response) => {
+router.delete("/:formTemplateName", async (request, response) => {
     try {
-      const formTemplateId = request.params.formTemplateId;
+      const formTemplateName = request.params.formTemplateName;
   
       // Delete the form template
-      await FormTemplate.findByIdAndDelete(formTemplateId);
-  
-    // Delete all associated forms by finding forms with the matching formTemplateId
-    await Form.deleteMany({ formTemplateId: formTemplateId });
+      await FormTemplate.findOneAndDelete(formTemplateName);
   
       response.status(200).json({ message: "Form template and associated forms deleted successfully" });
     } catch (error) {

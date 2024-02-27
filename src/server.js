@@ -40,10 +40,6 @@ app.use("/formTemplates", formTemplateRouter)
 const formRouter = require('./controllers/FormController')
 app.use("/forms", formRouter)
 
-// Defining routes for form template deletion
-const formTemplateDeleteRouter = require('./controllers/FormTemplateController');
-app.use("/formTemplateId/delete", formTemplateDeleteRouter)
-
 
 module.exports = {
     app
