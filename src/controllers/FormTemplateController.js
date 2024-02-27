@@ -52,19 +52,24 @@ router.post('/add', async (request, response) => {
 })
 
 // Delete a form template and associated forms
+// Delete a form template and associated forms
 router.delete("/:formTemplateName", async (request, response) => {
     try {
-      const formTemplateName = request.params.formTemplateName;
-  
-      // Delete the form template
-      await FormTemplate.findOneAndDelete(formTemplateName);
-  
-      response.status(200).json({ message: "Form template and associated forms deleted successfully" });
+        const formTemplateName = request.params.formTemplateName;
+
+        // Delete the form template
+        await FormTemplate.findOneAndDelete({ formName: formTemplateName });
+
+        // Delete associated forms
+        await Form.deleteMany({ formName: formTemplateName });
+
+        response.status(200).json({ message: "Form template and associated forms deleted successfully" });
     } catch (error) {
-      console.error("Error:", error);
-      response.status(500).json({ error: "Internal server error" });
+        console.error("Error:", error);
+        response.status(500).json({ error: "Internal server error" });
     }
-  });
+});
+
 
 
 module.exports = router;
