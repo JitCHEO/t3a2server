@@ -30,10 +30,10 @@ const FormSchema = new mongoose.Schema({
     enum: ['open', 'pending task', 'closed'],
     default: 'open'
   },
-  actions: {
+  actions: [{
     type: mongoose.Types.ObjectId,
     ref: 'Action'
-  }
+  }]
 
 });
 
