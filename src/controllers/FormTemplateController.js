@@ -1,6 +1,7 @@
 const express = require("express")
 const { FormTemplate } = require("../models/FormTemplateModel")
 const { Form } = require("../models/FormModel")
+const { User } = require("../models/UserModel")
 
 const router = express.Router();
 
@@ -64,6 +65,8 @@ router.delete("/:formTemplateName", async (request, response) => {
 
         // Delete associated forms
         await Form.deleteMany({ formName: formTemplateName });
+
+        await User.updateMany({}, { $pull: { favourites: formTemplateName } });
 
         response.status(200).json({ message: "Form template and associated forms deleted successfully" });
     } catch (error) {
