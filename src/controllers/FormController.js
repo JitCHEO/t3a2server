@@ -22,9 +22,10 @@ router.get('/currentUser', async (request, response) => {
 
 router.get("/:id", async(request, response) => {
   try{
-      let result = await User.findById(request.params.id);
+      let result = await Form.findById(request.params.id)
+                              .populate('formTemplate')
       if(!result){
-          return response.status(404).json({message:"User not found"});
+          return response.status(404).json({message:"Form not found"});
       }
       return response.json({result});
   }catch(error){
@@ -53,6 +54,22 @@ router.post('/submit', async (request, response) => {
       })
   } catch (error) {
       response.status(500).json({error: error.message})
+  }
+})
+
+router.patch('/:formId', async (request, response) => {
+
+
+  try {
+    const updatedForm = await Form.findByIdAndUpdate(request.params.formId, {status: request.body.status}, {new: true})
+    if (!updatedForm) {
+      return response.status(404).json({ error: 'Form not found' }); 
+    }
+    const result = updatedForm.status
+    response.json({ result: 'Form updated successfully', result });
+  } catch (error) {
+    console.error('Error updating form:', error);
+    response.status(500).json({ error: 'Internal server error' });
   }
 })
 
