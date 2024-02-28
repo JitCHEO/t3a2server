@@ -1,6 +1,6 @@
 const express = require("express")
 const { FormTemplate } = require("../models/FormTemplateModel")
-const { From } = require("../models/FormModel")
+const { Form } = require("../models/FormModel")
 
 const router = express.Router();
 
@@ -54,6 +54,8 @@ router.post('/add', async (request, response) => {
 // Delete a form template and associated forms
 // Delete a form template and associated forms
 router.delete("/:formTemplateName", async (request, response) => {
+    
+    console.log(request.params.formTemplateName)
     try {
         const formTemplateName = request.params.formTemplateName;
 
