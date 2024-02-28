@@ -58,5 +58,21 @@ router.post('/submit', async (request, response) => {
   }
 })
 
+router.patch('/:formId', async (request, response) => {
+
+
+  try {
+    const updatedForm = await Form.findByIdAndUpdate(request.params.formId, {status: request.body.status}, {new: true})
+    if (!updatedForm) {
+      return response.status(404).json({ error: 'Form not found' }); 
+    }
+    const result = updatedForm.status
+    response.json({ result: 'Form updated successfully', result });
+  } catch (error) {
+    console.error('Error updating form:', error);
+    response.status(500).json({ error: 'Internal server error' });
+  }
+})
+
 // Export the router
 module.exports = router;
