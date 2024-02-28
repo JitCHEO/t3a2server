@@ -22,10 +22,12 @@ router.get('/currentUser', async (request, response) => {
 
 router.get("/:id", async(request, response) => {
   try{
-      let result = await User.findById(request.params.id);
+      let result = await Form.findById(request.params.id)
+                              .populate('formTemplate')
       if(!result){
-          return response.status(404).json({message:"User not found"});
+          return response.status(404).json({message:"Form not found"});
       }
+      console.log(result)
       return response.json({result});
   }catch(error){
       return response.status(500).json({message: " Internal server error"});
