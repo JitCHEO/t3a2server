@@ -8,7 +8,7 @@ const FormTemplateSchema = new Schema({
         unique: true
     },
     assignedTo: {
-        type: String,
+        type: mongoose.Types.ObjectId,
         required: true
     },
     components: {

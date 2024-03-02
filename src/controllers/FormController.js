@@ -10,7 +10,14 @@ router.get('/currentUser', async (request, response) => {
     const id = getUserIdFromToken(request.headers.jwt)
     const result = await Form.find({user: id, formTemplate: request.headers.formid})
                               .populate('user', '-_id fname lname')
-                              .populate('formTemplate', '-_id assignedTo')
+                              .populate({
+                                path: 'formTemplate',
+                                select: '-_id assignedTo',
+                                populate: {
+                                  path: 'assignedTo',
+                                  model: 'User',
+                                  select: '-_id fname lname'
+                                }})
     if(!result){
       return response.status(404).json({message:"completed forms not found"});
   }
@@ -62,7 +69,7 @@ router.patch('/:formId', async (request, response) => {
 
 
   try {
-    const updatedForm = await Form.findByIdAndUpdate(request.params.formId, {status: request.body.status}, {new: true})
+    const updatedForm = await Form.findByIdAndUpdate(request.params.formId, request.body, {new: true})
     if (!updatedForm) {
       return response.status(404).json({ error: 'Form not found' }); 
     }
