@@ -44,7 +44,11 @@ const FormSchema = new mongoose.Schema({
       type: Date, 
       default: Date.now 
   }
-  }]
+  }],
+  taskedUser: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User'
+  }
 
 });
 
