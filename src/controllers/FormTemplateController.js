@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Define routes
 router.get("/", async (request, response) =>{
-    let result = await FormTemplate.find();
+    let result = await FormTemplate.find()
     response.json({result});
 })
 

@@ -27,12 +27,23 @@ const FormSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['open', 'pending task', 'closed'],
+    enum: ['open', 'pending action', 'closed'],
     default: 'open'
   },
   actions: [{
-    type: mongoose.Types.ObjectId,
-    ref: 'Action'
+    message: {
+      type: String,
+      required: true
+  },
+  sender: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User', 
+      required: true
+  },
+  timestamp: {
+      type: Date, 
+      default: Date.now 
+  }
   }]
 
 });
