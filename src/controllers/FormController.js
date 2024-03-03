@@ -28,6 +28,28 @@ router.get('/currentUser', async (request, response) => {
   }
 })
 
+router.get('/actions', async (request, response) => {
+  try {
+    const id = getUserIdFromToken(request.headers.jwt);
+
+    const result = await Form.find({
+      $or: [
+        { taskedUser: id },
+        { assignedTo: id }
+      ]
+    })
+
+    if (!result || result.length === 0) {
+      return response.status(404).json({ message: "Forms not found for the specified criteria" });
+    }
+
+    return response.json({ result: result });
+  } catch (error) {
+    return response.status(500).json({ message: "Internal server error"});
+  }
+});
+
+
 router.get("/:id", async(request, response) => {
   try{
       let result = await Form.findById(request.params.id)
@@ -51,7 +73,7 @@ router.post('/submit', async (request, response) => {
   
   try {
 
-    const { description,formTemplate, formData } = request.body;
+    const { description,formTemplate, formData, assignedTo } = request.body;
 
     const id = getUserIdFromToken(request.headers.jwt)
 
@@ -59,7 +81,8 @@ router.post('/submit', async (request, response) => {
           description: description,
           formTemplate: formTemplate,
           formData: formData,
-          user: id
+          user: id,
+          assignedTo: assignedTo
       })
 
       response.status(201).json({

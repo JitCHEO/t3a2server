@@ -48,7 +48,11 @@ const FormSchema = new mongoose.Schema({
   taskedUser: {
     type: mongoose.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  assignedTo: {
+    type: mongoose.Types.ObjectId,
+    required: true
+}
 
 });
 
