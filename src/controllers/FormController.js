@@ -32,20 +32,16 @@ router.get('/actions', async (request, response) => {
   try {
     const id = getUserIdFromToken(request.headers.jwt);
 
-    const result = await Form.find({
-      $or: [
-        { taskedUser: id },
-        { assignedTo: id }
-      ]
-    })
+    const tasks = await Form.find({ taskedUser: id });
+    const assignments = await Form.find({ assignedTo: id });
 
-    if (!result || result.length === 0) {
+    if ((!tasks || tasks.length === 0) && (!assignments || assignments.length === 0)) {
       return response.status(404).json({ message: "Forms not found for the specified criteria" });
     }
 
-    return response.json({ result: result });
+    return response.json({ tasks: tasks, assignments: assignments });
   } catch (error) {
-    return response.status(500).json({ message: "Internal server error"});
+    return response.status(500).json({ message: "Internal server error" });
   }
 });
 
