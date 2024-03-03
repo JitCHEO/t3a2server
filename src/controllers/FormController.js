@@ -32,8 +32,8 @@ router.get('/actions', async (request, response) => {
   try {
     const id = getUserIdFromToken(request.headers.jwt);
 
-    const tasks = await Form.find({ taskedUser: id });
-    const assignments = await Form.find({ assignedTo: id });
+    const tasks = await Form.find({ taskedUser: id, status: {$ne: 'closed'} });
+    const assignments = await Form.find({ assignedTo: id, status: {$ne: 'closed'} });
 
     if ((!tasks || tasks.length === 0) && (!assignments || assignments.length === 0)) {
       return response.status(404).json({ message: "Forms not found for the specified criteria" });
