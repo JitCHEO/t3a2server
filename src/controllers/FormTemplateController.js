@@ -59,12 +59,12 @@ router.delete("/:formTemplateName", async (request, response) => {
     console.log(request.params.formTemplateName)
     try {
         const formTemplateName = request.params.formTemplateName;
-
+        const formTemplate = await FormTemplate.findOne({formName: formTemplateName}, '_id')
         // Delete the form template
         await FormTemplate.findOneAndDelete({ formName: formTemplateName });
 
         // Delete associated forms
-        await Form.deleteMany({ formName: formTemplateName });
+        await Form.deleteMany({ formTemplate: formTemplate._id });
 
         await User.updateMany({}, { $pull: { favourites: formTemplateName } });
 
