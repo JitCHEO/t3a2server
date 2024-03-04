@@ -14,7 +14,7 @@ function generateJwt(userId) {
         {
             userId
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET || 'test-key',
         {expiresIn: "3d"}
     )
 
@@ -51,7 +51,7 @@ function verifyToken(request, response, next) {
         return response.status(401).json({error: "Unauthorized"})
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET || 'test-key', (error, decoded) => {
         if (error) {
             return response.status(403).json({ error: 'Invalid token'})
         }
