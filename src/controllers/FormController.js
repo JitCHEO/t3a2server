@@ -91,7 +91,6 @@ router.post('/submit', async (request, response) => {
 
 router.patch('/:formId', async (request, response) => {
 
-
   try {
     const {actions, ...restOfData} = request.body
     const updatedForm = await Form.findByIdAndUpdate(

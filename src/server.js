@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+
 // Creating EXPRESS APP
 const app = express();
 
@@ -21,14 +22,12 @@ app.use(cors(corsOptions));
 // Middleware to parse JSON body
 app.use(express.json());
 
-// JWT functionality (Users)
 app.get("/", (request, response) => {
     response.json({
-        message: "Welcome to Stream-Lined API"
+        message: "Welcome to the Stream-Lined API"
     })
 });
 const userRouter = require('./controllers/UserController');
-const { JsonWebTokenError } = require("jsonwebtoken");
 app.use("/users", userRouter);
 
 
