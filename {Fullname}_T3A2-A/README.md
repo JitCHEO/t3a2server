@@ -18,7 +18,6 @@
     - access restrictions for form building and data deletion
     - restricting viewing access of completed forms
 
-
 - Min viable product will include;
     - form builder
     - different form types
@@ -49,8 +48,8 @@
 ##### Sam (warehouse manager) Doesn't have time to deal with every issue little issue himself. Likes to use data analysis to direct decision making. Cares about the well-being of his team. Wants to streamline as much as possible to eliminate hiccups in the processes.
 
 - As Sam, I want to be able to delegate the specific forms, so I can focus on the more important ones.
-    - [ ] Assign users when building new forms
-    - [ ] Re-assign forms 
+    - [x] Assign users when building new forms
+    - [x] Re-assign forms 
 - As Sam, I want to be able to extract this data for analysis, So I can find trends and adapt the warehouse processes or report to my boss how well things are going.
     - [ ] Export spreadsheet of form listings
 - As Sam, I want to be able to make new form types or change the ones I have, So I can feel in control of my warehouses processes.
@@ -73,7 +72,7 @@
     - [ ] upload data/images to forms
     - [ ] view screenshots of uploaded data/images
 - As Thomas, I want to be able to direct team members to take certain actions from a request submission and confirm they've completed them, so that I can feel confident incidents are dealt with properly.
-    - [ ] Actions requests against filled out forms
+    - [x] Actions requests against filled out forms
 
 ##### Bob (warehouse employee) Just wants to get the job done and go home. Not overly concerned about the things going on around him. Keeps to themselves. Old school, doesn't like technology
 
@@ -184,3 +183,42 @@ options:
 ![14-02](./docs/Trello/14-02-2024.JPG)
 16th - Feb
 ![16-02](./docs/Trello/16-02-2024.JPG)
+18th - Feb
+![18-02](./docs/Trello/18-02-2024.JPG)
+21st - Feb
+![21-02](./docs/Trello/21-02-2024.JPG)
+25th - Feb
+![25-02](./docs/Trello/25-02-2024.JPG)
+27th - Feb
+![27-02](./docs/Trello/27-02-2024.JPG)
+1st - Mar
+![01-03](./docs/Trello/01-03-2024.JPG)
+5th - Mar
+![05-03](./docs/Trello/05-03-2024.JPG)
+7th - Mar
+![07-03](./docs/Trello/07-03-2024.JPG)
+
+## Production Website Link
+
+https://stream-lined.netlify.app/ 
+
+## Repository Links
+
+Front-end 
+https://github.com/pipersjames/t3a2react-app
+Backend
+https://github.com/JitCHEO/t3a2serverA
+
+## Packages Implemented
+
+## Testing 
+
+Testing CI build into both backend and front end components. Github actions implemented.
+
+##### Manual tests
+
+* [Manual Tests - Round 1](./docs/manual%20Tests/Final%20Project%20-%20Round%201.pdf)
+
+
+## Attributions
+
