@@ -1,3 +1,9 @@
+[Jump to Part A](#PartA)
+[Jump to Part B](#PartB)
+
+<a id="PartA"></a>
+
+# Part A
 
 ## R1	Description of your website, including:
 - Purpose
@@ -198,27 +204,134 @@ options:
 7th - Mar
 ![07-03](./docs/Trello/07-03-2024.JPG)
 
-## Production Website Link
+<a id="PartB"></a>
 
-https://stream-lined.netlify.app/ 
+# Part B
+
+## Production Website Links
+
+Front End
+https://stream-lined.netlify.app
+Back End
+https://stream-linedd-8391d4c8cf39.herokuapp.com
+
 
 ## Repository Links
 
-Front-end 
+Front End 
 https://github.com/pipersjames/t3a2react-app
-Backend
+Back End
 https://github.com/JitCHEO/t3a2serverA
 
 ## Packages Implemented
 
+##### Front End:
+
+@fortawesome/fontawesome-free: Provides scalable vector icons that can be customized and styled easily. [Documentation](https://fontawesome.com/)
+
+* used in ShortQA and LongQA components for pencil icon
+
+Bootstrap: A popular front-end framework for developing responsive and mobile-first websites. It provides CSS and JavaScript components for layout, forms, navigation, and more. [Documentation](https://getbootstrap.com)
+
+* used throughout the application with bootstrap specific class names and bootstrap components e.g. modals, tables, col, row, button etc.
+
+Ant Design (antd): A design system for enterprise-level products. It provides a set of high-quality React components and layouts. [Documentation](https://ant.design/)
+
+* used when bootstrap did not offer the design wanted. e.g. ActionsMenu has menu component native to antd
+
+js-cookie: A simple, lightweight JavaScript API for handling browser cookies. [Documentation](https://www.npmjs.com/package/js-cookie)
+
+* used to store and recover jwt from cookies. also used to store current access levels assosciated with the user
+
+Moment.js: A JavaScript library for parsing, validating, manipulating, and formatting dates and times. [Documentation](https://www.npmjs.com/package/moment)
+
+* used to convert date objects to a more readable state. implemented in table of the FormPage and added comments to completed forms
+
+React: A JavaScript library for building user interfaces, particularly single-page applications. [Documentation](https://react.dev/)
+
+* what made this application possible. design layout based on this library. use of jsx components.
+
+
+react-router-dom: Provides routing capabilities for React applications, enabling navigation between different components based on the URL. [Documentation](https://www.npmjs.com/package/react-router-dom)
+
+* used to add a layer of navigation. e.g. navlinks in the navbar. useNavigate to redirect the user when conditions are met. extracting parameters when needed.
+
+###### Front End Development dependencies:
+
+Jest: A JavaScript testing framework maintained by Facebook. It is widely used for unit and integration testing of JavaScript code, particularly in React applications. [Documentation](https://jestjs.io/)
+
+* used to build and run tests. testing framework implemented through github actions for intended CI.
+
+
+##### Back End:
+
+bcryptjs: A library to help hash passwords. It uses bcrypt algorithm to securely hash passwords. [Documentation](https://www.npmjs.com/package/bcryptjs)
+
+* hashes all newly created passwords of new users. used to check hashed passwords as well in the verification steps, refer userAuthFunctions.js
+
+cors: Cross-Origin Resource Sharing (CORS) middleware for Express.js, allowing you to enable CORS with various options. [Documentation](https://www.npmjs.com/package/cors)
+
+* cors options limit the addresses that can access the application to the production and development site locations only, refer server.js
+
+dotenv: Loads environment variables from a .env file into process.env. Useful for managing configuration settings in Node.js applications. [Documentation](https://www.npmjs.com/package/dotenv)
+
+* loads the environment variables. refer .env example for what is used
+
+Express.js: A web application framework for Node.js that simplifies the process of building server-side web applications. [Documentation](https://expressjs.com/)
+
+* establishes all the listening fuctionality and running of the connection API. implemented in the server, index, database files
+
+jsonwebtoken: A JSON Web Token (JWT) implementation for Node.js. It allows you to generate and verify JWTs, which are commonly used for authentication and authorization. [Documentation](https://www.npmjs.com/package/jsonwebtoken)
+
+* as described, refer userAuthfunctions and UserController for implementation
+
+Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js. It provides a straight-forward, schema-based solution for modeling application data. [Documentation](https://mongoosejs.com/)
+
+###### Back End Development dependencies:
+
+Jest: Same as above, used for testing backend JavaScript code.
+
+*primary testing framework, implemented with github actions
+
+mongodb-memory-server: A tool to run an in-memory MongoDB instance for testing purposes. [Documentation](https://www.npmjs.com/package/mongodb-memory-server)
+
+* used in the model test to create and test mock models
+
+Nodemon: A utility that monitors changes in your Node.js application and automatically restarts the server. Useful for development. [Documentation](https://www.npmjs.com/package/nodemon)
+
+* used to restart the development server when changes are made
+
+Supertest: A library for testing HTTP servers in Node.js. It allows you to send HTTP requests and assert responses, making it useful for integration testing. [Documentation](https://www.npmjs.com/package/supertest)
+
+* for testing with server requests, refer controller tests
+
+
 ## Testing 
 
-Testing CI build into both backend and front end components. Github actions implemented.
+Testing CI built into both backend and front end components through Github actions.
+
+run ```npm test``` in the front end to get a coverage report
+
+run ```npm run test-cc``` for coverage report in the backend
 
 ##### Manual tests
 
 * [Manual Tests - Round 1](./docs/manual%20Tests/Final%20Project%20-%20Round%201.pdf)
 
+* [Manual Tests - Round 2]
+
+* [Client Tests]
+
 
 ## Attributions
 
+Front End
+
+Favicon - <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik - Flaticon</a>
+
+Login Background - Image by <a href="https://pixabay.com/users/prawny-162579/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1082217">Prawny</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1082217">Pixabay</a>
+
+line divider - Image by <a href="https://pixabay.com/users/gdj-1086657/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7551966">Gordon Johnson</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7551966">Pixabay</a>
+
+
+Coffee Robot - Image by <a href="https://pixabay.com/users/juliush-3921568/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8520523">Julius H.</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8520523">Pixabay</a>
