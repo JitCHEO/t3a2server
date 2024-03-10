@@ -1,13 +1,12 @@
 const express = require("express");
-const bcrypt = require('bcryptjs')
 const {User} = require('../models/UserModel');
 const {comparePassword, generateJwt, verifyToken, getUserIdFromToken} = require('../utils/userAuthFunctions')
 
 
 const router = express.Router();
 
-
-
+//required
+//header with jwt : jwt
 router.get('/favourites', async(request, response) => {
         try {
             const id = getUserIdFromToken(request.headers.jwt);
@@ -18,6 +17,12 @@ router.get('/favourites', async(request, response) => {
                 });
         }
         const result = await User.findOne({_id: id})
+
+        if (!result) {
+            return response.status(404).json({
+                error: 'User not found'
+            });
+        }
         
         const { favourites } = result.toObject()
         return response.json({
@@ -29,22 +34,19 @@ router.get('/favourites', async(request, response) => {
     }
 })
 
-// GET method
-// Find all user in DB
-//localhost:3000/users/
-// GOOD
+
 router.get("/", async (request, response) =>{
     let result = await User.find();
     response.json({result});
 })
 
+//required
+//header with jwt : jwt
 router.get("/auth-checker", verifyToken, async (request, response) => {
     response.json({message: "you're still authorized"})
 });
 
-// GET method
-//Find user by ID in the DB
-//localhost:3000/users/:id
+//required user id passed through params
 router.get("/:id", async(request, response) => {
     try{
         let result = await User.findById(request.params.id);
@@ -53,12 +55,14 @@ router.get("/:id", async(request, response) => {
         }
         return response.json({result});
     }catch(error){
-        return response.status(500).json({message: " Internal server error"});
+        return response.status(500).json({message: "Internal server error"});
     }
 })
 
-//Add Favourites
-
+//Add Favourites in 
+// {
+//     favourite: [updatedFavourites]
+// }
 router.patch('/favourites', async (request, response) => {
 
     try {
@@ -66,7 +70,6 @@ router.patch('/favourites', async (request, response) => {
         if (!id) {
             return response.status(401).json({ error: 'Invalid token' });
         }
-
         const result = await User.findOneAndUpdate(
             { _id: id },
             { $set: { favourites: request.body.favourite } },
@@ -118,7 +121,7 @@ router.post("/login", async (request, response) => {
         const user = await User.findOne({ email: request.body.email });
         
         if (!user) {
-            return response.status(403).json({ error: "Invalid email or password." });
+            return response.status(403).json({ error: "Invalid email." });
         }
         
         const isPasswordCorrect = await comparePassword(request.body.password, user.password);

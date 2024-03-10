@@ -308,11 +308,13 @@ Supertest: A library for testing HTTP servers in Node.js. It allows you to send 
 
 ## Testing 
 
+##### code driven
 Testing CI built into both backend and front end components through Github actions.
 
 run ```npm test``` in the front end to get a coverage report
 
 run ```npm run test-cc``` for coverage report in the backend
+
 
 ##### Manual tests
 
@@ -322,10 +324,17 @@ run ```npm run test-cc``` for coverage report in the backend
 
 * [Client Tests]
 
+##### Production website testing with potential clients
+
+Allie on wednesday 5th of March
+Feedback
+    * confusing naming convention
+    * felt lost navigating around
+    * deleted a template by accident wanting to delete a user record
+    * in browser navigation did not work as expected
+    * large typing line showing up on some of the elements
 
 ## Attributions
-
-Front End
 
 Favicon - <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik - Flaticon</a>
 
@@ -335,3 +344,6 @@ line divider - Image by <a href="https://pixabay.com/users/gdj-1086657/?utm_sour
 
 
 Coffee Robot - Image by <a href="https://pixabay.com/users/juliush-3921568/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8520523">Julius H.</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8520523">Pixabay</a>
+
+Chatgpt
+
