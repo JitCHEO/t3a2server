@@ -19,12 +19,12 @@ router.get('/currentUser', async (request, response) => {
                                   model: 'User',
                                   select: '-_id fname lname'
                                 }})
-    if(!result){
+    if(!result || result.length === 0){
       return response.status(404).json({message:"completed forms not found"});
   }
     return response.json({result: result})
   } catch (error) {
-    return response.status(500).json({message: " Internal server error"})
+    return response.status(500).json({message: "Internal server error"})
   }
 })
 
@@ -106,7 +106,6 @@ router.patch('/:formId', async (request, response) => {
     const result = updatedForm.status
     response.json({ result: 'Form updated successfully', result });
   } catch (error) {
-    console.error('Error updating form:', error);
     response.status(500).json({ error: 'Internal server error' });
   }
 })

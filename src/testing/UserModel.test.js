@@ -22,7 +22,7 @@ describe('User schema', () => {
         await mongoServer.stop();
     });
 
-    it('should create a User document with encrypted password', async () => {
+    test('should create a User document with encrypted password', async () => {
         // Create a sample User data
         const userData = {
             fname: 'John',
