@@ -1,3 +1,7 @@
+# T3A2-B - Stream-lined Form application by James/Jit
+
+### navigation 
+[Presentation](./ppt/presentation.pdf)
 [Jump to Part A](#PartA)
 [Jump to Part B](#PartB)
 
@@ -203,6 +207,8 @@ options:
 ![05-03](./docs/Trello/05-03-2024.JPG)
 7th - Mar
 ![07-03](./docs/Trello/07-03-2024.JPG)
+10th - Mar
+![10-03](./docs//Trello/10-03-2024.JPG)
 
 <a id="PartB"></a>
 
@@ -320,19 +326,14 @@ run ```npm run test-cc``` for coverage report in the backend
 
 * [Manual Tests - Round 1](./docs/manual%20Tests/Final%20Project%20-%20Round%201.pdf)
 
-* [Manual Tests - Round 2]
+##### Production website testing with client
 
-* [Client Tests]
-
-##### Production website testing with potential clients
-
-Allie on wednesday 5th of March
-Feedback
-    * confusing naming convention
-    * felt lost navigating around
-    * deleted a template by accident wanting to delete a user record
-    * in browser navigation did not work as expected
-    * large typing line showing up on some of the elements
+Comments from Allie on wednesday 5th of March
+* confusing naming convention
+* felt lost navigating around
+* deleted a template by accident wanting to delete a user record
+* in browser navigation did not work as expected
+* large typing line showing up on some of the elements
 
 ## Attributions
 
