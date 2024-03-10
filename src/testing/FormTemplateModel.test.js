@@ -21,7 +21,7 @@ describe('FormTemplate schema', () => {
         await mongoServer.stop();
     });
 
-    it('should create a FormTemplate document', async () => {
+    test('should create a FormTemplate document', async () => {
         // Create a sample FormTemplate data
         const formTemplateData = {
             formName: 'Test Form',

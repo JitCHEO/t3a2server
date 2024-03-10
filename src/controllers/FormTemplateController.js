@@ -16,7 +16,7 @@ router.get('/:formName', async (request, response) => {
         const formName = request.params.formName;
 
         // Check if formName is being received correctly
-        console.log('Received formName:', formName);
+        // console.log('Received formName:', formName);
 
 
         const template = await FormTemplate.findOne({ formName }).catch(error => error);
@@ -53,13 +53,12 @@ router.post('/add', async (request, response) => {
 })
 
 // Delete a form template and associated forms
-// Delete a form template and associated forms
 router.delete("/:formTemplateName", async (request, response) => {
     
-    console.log(request.params.formTemplateName)
     try {
         const formTemplateName = request.params.formTemplateName;
-        const formTemplate = await FormTemplate.findOne({formName: formTemplateName}, '_id')
+        const formTemplate = await FormTemplate.findOne({ formName: formTemplateName })
+        
         // Delete the form template
         await FormTemplate.findOneAndDelete({ formName: formTemplateName });
 
@@ -70,7 +69,6 @@ router.delete("/:formTemplateName", async (request, response) => {
 
         response.status(200).json({ message: "Form template and associated forms deleted successfully" });
     } catch (error) {
-        console.error("Error:", error);
         response.status(500).json({ error: "Internal server error" });
     }
 });
